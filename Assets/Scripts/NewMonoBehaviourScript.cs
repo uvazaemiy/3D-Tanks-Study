@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float speed = 0;
+
+    private Animator anim;
+
+    private void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        anim.SetFloat("Speed", speed);
     }
 }
