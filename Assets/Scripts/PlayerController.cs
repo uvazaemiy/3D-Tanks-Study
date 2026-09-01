@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
             // Додав множник для анімації бігу, якщо це підтримується твоїм Blend Tree
             float animSpeedMultiplier = _isRunning ? 2f : 1f;
 
-            animator.SetFloat("Speed", _currentDirection.x );
-            animator.SetFloat("Strafe", _currentDirection.z * animSpeedMultiplier);
+            animator.SetFloat("Strafe", _currentDirection.x );
+            animator.SetFloat("Speed", _currentDirection.z * animSpeedMultiplier);
         }
     }
