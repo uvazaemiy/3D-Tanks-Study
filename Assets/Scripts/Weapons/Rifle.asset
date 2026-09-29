@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4e86f5f7eace5479067bb9ba7fed90, type: 3}
+  m_Name: Rifle
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  weaponName: Rifle
+  description: Automatic rifle
+  icon: {fileID: 0}
+  itemData: {fileID: 11400000, guid: 3bb84e1cb7b3516458d3f5daa8e3281a, type: 2}
+  weaponType: 1
+  damage: 0.2
+  fireRate: 600
+  bulletSpeed: 50
+  magazineSize: 30
+  shootSound: {fileID: 8300000, guid: 86e73e08532b32a4ea142a6a6845d1c1, type: 3}
+  bulletPrefab: {fileID: 6879774006747291992, guid: bdcbc08f867d6a1418d8f1495486205f, type: 3}
+  muzzleFlashEffect: {fileID: 0}

@@ -906,6 +906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3587418907991562054}
   - component: {fileID: 9211411281470160684}
+  - component: {fileID: 3066553967291299431}
   - component: {fileID: 2850149898380395234}
   - component: {fileID: 764516377563718008}
   - component: {fileID: 883508084406356435}
@@ -950,6 +951,23 @@ MonoBehaviour:
   _walkSpeed: 2
   _runSpeed: 5
   _smoothForce: 8
+--- !u!114 &3066553967291299431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3587418907991657254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9afa974b129ab45a4cf0f2c518a83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapon
+  availableWeapons:
+  - {fileID: 11400000, guid: ac31189851a1c3b4595855c91a22d22a, type: 2}
+  - {fileID: 11400000, guid: 9c1055e245268a142ab66fd9dec2357e, type: 2}
+  - {fileID: 11400000, guid: 5281e15ca86332c428e3c0f606bcb7bf, type: 2}
+  currentWeapon: {fileID: 0}
 --- !u!95 &2850149898380395234
 Animator:
   serializedVersion: 7

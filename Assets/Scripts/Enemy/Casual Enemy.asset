@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9fca4ef28114b4786e2e65ab929d9a, type: 3}
+  m_Name: Casual Enemy
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Casual Enemy
+  MaxHealth: 0
+  speed: 1
+  damage: 1
+  Health: 0
+  enemyMat: {fileID: 2100000, guid: 9ed9fe90cef3abf42b90249e6f9f534c, type: 2}
+  enemyColor: {r: 1, g: 1, b: 1, a: 1}
