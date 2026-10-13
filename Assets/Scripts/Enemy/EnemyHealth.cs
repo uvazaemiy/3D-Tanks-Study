@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     // Перетягни сюди потрібний EnemyData.asset в Inspector
     public EnemyData data;
-
+    
     private int currentHealth;
     private MeshRenderer meshRenderer;
 
@@ -32,12 +32,6 @@ public class Enemy : MonoBehaviour
         gameObject.name = data.enemyName;
 
         Debug.Log("Створено ворога: " + data.enemyName + " HP: " + currentHealth + " Speed: " + data.speed);
-    }
-
-    void Update()
-    {
-        // Простий рух вперед з швидкістю з SO
-        transform.Translate(Vector3.left * data.speed * Time.deltaTime);
     }
 
     public void TakeDamage(int amount)
