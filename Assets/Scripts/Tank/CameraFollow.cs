@@ -5,12 +5,10 @@ public class CameraFollow : MonoBehaviour
     [Header("Target & Following")]
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 targetOffset = new Vector3(0f, 2f, 0f);
-    [SerializeField] private float smoothSpeed = 8f;
+    [SerializeField] private float smoothSpeed = 20f; // Трохи збільшено для швидкого слідування
 
-    [Header("Orbit Rotation & Limits")]
+    [Header("Orbit Rotation")]
     [SerializeField] private float rotationSpeed = 200f;
-    [SerializeField] private float minPitch = -20f;  // Мінімальний кут нахилу вниз
-    [SerializeField] private float maxPitch = 80f;   // Максимальний кут нахилу вгору
 
     [Header("Zoom (Mouse Scroll)")]
     [SerializeField] private float distance = 10f;
@@ -21,42 +19,47 @@ public class CameraFollow : MonoBehaviour
     private float currentYaw = 0f;
     private float currentPitch = 20f;
 
-    private void LateUpdate()
+    private void Start()
+    {
+        Cursor.visible = false;
+        Vector3 angles = transform.eulerAngles;
+        currentYaw = angles.y;
+        currentPitch = angles.x;
+    }
+
+    // Використовуємо FixedUpdate замість LateUpdate, щоб синхронізувати рух з фізикою об'єкта
+    private void FixedUpdate()
     {
         if (target == null)
             return;
-
-        // Вільне обертання камери (жодних кнопок затискати не потрібно)
-        float mouseX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
+        
+        float mouseX = Input.GetAxis("Mouse X") * rotationSpeed * Time.fixedDeltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.fixedDeltaTime;
 
         currentYaw += mouseX; 
         currentPitch -= mouseY;
 
-        // Жорстко обмежуємо нахил камери у заданих межах (працює завжди)
-        currentPitch = Mathf.Clamp(currentPitch, minPitch, maxPitch);
-
-        // Керування віддаленням / наближенням через колесо миші
+        // Керування зумом (працює і в FixedUpdate через Time.fixedDeltaTime для стабільності)
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0f)
         {
-            distance -= scroll * zoomSpeed;
+            distance -= scroll * zoomSpeed * 1.5f; // Компенсація fixedDeltaTime для скролу
             distance = Mathf.Clamp(distance, minDistance, maxDistance);
         }
 
-        // Розрахунок позиції камери
+        // Розрахунок повороту та цільової позиції
         Quaternion rotation = Quaternion.Euler(currentPitch, currentYaw, 0f);
-        Vector3 lookAtTarget = target.position + targetOffset;
-        Vector3 targetPosition = lookAtTarget - (rotation * Vector3.forward * distance);
+        Vector3 targetCenter = target.position + targetOffset;
+        Vector3 targetPosition = targetCenter - (rotation * Vector3.forward * distance);
 
-        // Плавне переслідування цілі
+        // Застосовуємо поворот напряму
+        transform.rotation = rotation;
+
+        // Плавне переміщення камери до цільової точки з використанням Time.fixedDeltaTime
         transform.position = Vector3.Lerp(
             transform.position,
             targetPosition,
-            smoothSpeed * Time.deltaTime
+            1f - Mathf.Exp(-smoothSpeed * Time.fixedDeltaTime)
         );
-
-        // Постійне спрямування камери на ціль
-        transform.LookAt(lookAtTarget);
     }
 }

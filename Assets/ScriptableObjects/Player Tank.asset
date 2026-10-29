@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player Tank
   m_EditorClassIdentifier: Assembly-CSharp::TankConfig
   damage: 25
-  projectileSpeed: 18
+  projectileSpeed: 100
   fireCooldown: 0.7
   projectileLifetime: 5
   projectilePrefab: {fileID: 8698373087964069516, guid: cb2f36ad52f7f9642816533d316d8cce, type: 3}

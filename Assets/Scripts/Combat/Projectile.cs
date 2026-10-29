@@ -14,11 +14,14 @@ public class Projectile : MonoBehaviour
         projectileRigidbody = GetComponent<Rigidbody>();
     }
 
-    public void Initialize(int newDamage, float speed, float newLifetime, Collider newOwnerCollider)
+    public void Initialize(
+        int newDamage, 
+        float speed, 
+        float newLifetime
+        )
     {
         damage = newDamage;
         lifetime = newLifetime;
-        ownerCollider = newOwnerCollider;
         isInitialized = true;
 
         if (ownerCollider != null &&
@@ -44,10 +47,10 @@ public class Projectile : MonoBehaviour
         if (collision.collider == ownerCollider)
             return;
 
-        /*if (collision.collider.TryGetComponent(out DamageableTarget target))
+        if (collision.collider.TryGetComponent(out DamageableTarget target))
         {
             target.TakeDamage(damage);
-        }*/
+        }
 
         Destroy(gameObject);
     }
